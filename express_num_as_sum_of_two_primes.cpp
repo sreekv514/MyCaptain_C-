@@ -10,24 +10,24 @@ int main()
     int num;
     char choice = 'y';
 
-    cout<<"Program to express any number as the sum of two prime numbers\n";
+    cout<<"\n\tProgram to express any number as the sum of two prime numbers\n";
+    cout<<"-----------------------------------------------------------------------------\n";
 
     do
     {
-        cout<<"\n\nEnter a positive integer: ";
+        cout<<"\n\n\t Enter a positive integer: ";
         cin>>num;
         
         if(checkprime(num))
         {
-            cout<<"\n"<<num<<" is a prime number.\n";
-            cout<<"So it cannot be expressed as the sum of 2 prime numbers.\n";
+            cout<<"\n\t "<<num<<" is a prime number. So it cannot be expressed as the sum of 2 prime numbers.\n";
         }
         else
         {
             express_sum(num);
         }
         
-        cout<<"\n\nWould you like to run the program again? Y/N: ";
+        cout<<"\n\n\t Would you like to run the program again? Y/N: ";
         cin>>choice;
         
     }while(choice == 'y' || choice=='Y');
@@ -52,14 +52,19 @@ int checkprime(int a)
 
 void express_sum(int num)
 {
-    int i, j;
-    cout<<"\n";
+    int i, j, cnt==0;
+    cout<<"\n\t ";
     for(i=1, j=num-1; i<num && i<=j; i++, j--)
     {
        if(checkprime(i) && checkprime(j))
        {
-           cout<<num<<" = "<<i<<" + "<<j<<"\n";
+           cout<<num<<" = "<<i<<" + "<<j<<"\n\t ";
+           ++cnt;
            continue;
        }
+    }
+    if(cnt==0)
+    {
+        cout<<num<<" is not a prime number, however it cannot be expressed as a sum of 2 prime numbers.\n";
     }
 }
